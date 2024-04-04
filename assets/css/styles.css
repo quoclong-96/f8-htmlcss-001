@@ -55,10 +55,11 @@ a {
 
 .hero-wrap {
     position: relative;
+    /* Sử dụng display flex để khắc phục mảgin collapse, flex-diẽtion column là để phòng trường hợp có nhiều phân tử con xếp ngang hàng  */
     display: flex;
     flex-direction: column;
     background: #e6f0ff;
-    height: 100vh;
+    height: calc(100vh - 90px);
 }
 
 .navbar {
