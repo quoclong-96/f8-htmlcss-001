@@ -6,13 +6,17 @@
     --primary-color: #0f1b4c;
 }
 
+html,
+body {
+    scroll-behavior: smooth;
+}
+
 html {
     font-size: 62.5%;
 }
 
 body {
     font-size: 1.6rem;
-    font-family: "Poppins";
     font-family: "Poppins", sans-serif;
 }
 
@@ -44,9 +48,16 @@ a {
     opacity: 0.9;
 }
 
-/* Header */
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp, 2);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ======== Header ======== */
 .fixed-header {
-    background-color: #e6f0ff;
+    background: #e6f0ff;
     padding-top: 26px;
     position: sticky;
     top: -26px;
@@ -55,9 +66,9 @@ a {
 
 .hero-wrap {
     position: relative;
-    /* Sử dụng display flex để khắc phục mảgin collapse, flex-diẽtion column là để phòng trường hợp có nhiều phân tử con xếp ngang hàng  */
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background: #e6f0ff;
     height: calc(100vh - 90px);
 }
@@ -65,7 +76,6 @@ a {
 .navbar {
     display: flex;
     align-items: center;
-    /* padding-top: 50px; */
     padding: 12px 0;
 }
 
@@ -101,15 +111,11 @@ a {
     border-radius: 8px;
 }
 
-.hero {
-    margin-top: 130px;
-}
-
-.hero .info {
+.hero-wrap .info {
     width: 51%;
 }
 
-.hero .sub-title {
+.hero-wrap .sub-title {
     font-weight: 500;
     font-size: 1.8rem;
     line-height: 1.5;
@@ -117,7 +123,7 @@ a {
     color: #687690;
 }
 
-.hero .title {
+.hero-wrap .title {
     margin-top: 8px;
     font-weight: 700;
     font-size: 6.2rem;
@@ -125,7 +131,7 @@ a {
     color: #000336;
 }
 
-.hero .desc {
+.hero-wrap .desc {
     margin-top: 30px;
     font-weight: 400;
     font-size: 1.8rem;
@@ -182,7 +188,7 @@ a {
 }
 
 .clients .images a:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* ======== Guides ======== */
@@ -214,8 +220,6 @@ a {
 }
 
 .guides .desc {
-    /* 459px là chiều rộng thiết kế
-    max-width 100% là chiều rộng tối đa khi thu nhỏ trình duyệt vẫn không thay đổi */
     width: 459px;
     max-width: 100%;
     margin: 20px auto 0;
@@ -271,6 +275,7 @@ a {
 .featured {
     margin-top: 41px;
     padding: 110px 0;
+    background: #f5fafe;
 }
 
 .featured .sub-title {
@@ -306,7 +311,8 @@ a {
 }
 
 .featured .list {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 70px;
 }
@@ -329,10 +335,10 @@ a {
     padding: 17px 20px 24px;
 }
 
-.featured .item .title {
+.featured .item .title a {
     font-weight: 600;
     font-size: 2rem;
-    line-height: 1;
+    line-height: 1.5;
     color: #000339;
 }
 
@@ -342,6 +348,7 @@ a {
     font-size: 1.4rem;
     line-height: 1.5;
     color: #a3a6ab;
+    word-break: break-all;
 }
 
 .featured .item .info {
@@ -385,18 +392,12 @@ a {
     width: 50%;
 }
 
-.stats .info {
-    padding: 79px 0 0 165px;
+.stats .img-block {
+    position: relative;
 }
 
-.stats .img-block .image {
-    /* Thuộc tính margin auto chỉ sử dụng được khi có display block . Nếu có thẻ cha là díplay flex thì thẻ margin auto áp dụng được cho thẻ con*/
-    display: block;
-    margin-left: auto;
-    width: 400px;
-    height: 460px;
-    border-radius: 12px;
-    object-fit: cover;
+.stats .info {
+    padding: 79px 0 0 165px;
 }
 
 .stats-trend {
@@ -451,10 +452,9 @@ a {
     margin-left: -3px;
     object-fit: cover;
     border-radius: 50%;
-    background: var(--bg-color, #1f3bb1);
+    background: var(--bg-color, #fff);
     font-weight: 450;
     font-size: 0.7rem;
-    /* set up line height và text-align để chữ R căn vào giữa */
     line-height: 16px;
     text-align: center;
     letter-spacing: -0.02em;
@@ -465,8 +465,13 @@ a {
     margin-left: 0;
 }
 
-.stats .img-block {
-    position: relative;
+.stats .img-block .image {
+    display: block;
+    margin-left: auto;
+    width: 400px;
+    height: 460px;
+    border-radius: 12px;
+    object-fit: cover;
 }
 
 .stats .sub-title {
@@ -577,7 +582,7 @@ a {
 }
 
 .footer .row-top {
-    gap: 185px;
+    column-gap: 185px;
 }
 
 .footer .heading {
@@ -621,6 +626,7 @@ a {
     width: 28px;
     height: 28px;
     border-radius: 3px;
+    background: #f9f9f9;
 }
 
 .footer .social-link + .social-link {
